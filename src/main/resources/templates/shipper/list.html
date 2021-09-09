@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title> Lista shippers</title>
+</head>
+<body>
+    <h1> Shipper List</h1>
+    <a class="btn btn-success" th:href="@{/shipper/new}"></a>
+    <div th:if="${msg != null}" class ="alert alert-succes" th:text="${msg}"></div>
+
+
+    <form class="form-inline mb-3" method="post" th:action="@{/shipper/search}">
+        <input class="form-control mr-2" placeholder="Search" name="searchName">
+        <button class="btn btn-outline-info" type="submit">Search</button>
+        <a class="btn btn-outline-danger ml-2" th:href="@{/shipper}">Clear</a>
+    </form>
+
+
+
+
+
+
+    <table class="table">
+        <tr>
+            <th> ID </th>
+            <th> Phone </th>
+            <th> Company </th>
+            <th>  </th>
+            <th>  </th>
+        </tr>
+        <tr th:each="shipper: ${shipperList}">
+            <td th:text="${shipper.shipperid}"></td>
+            <td th:text="${shipper.phone}"></td>
+            <td th:text="${shipper.companyname}"></td>
+            <td><a class="btn btn-info" th:href="@{'/shipper/edit?id='+${shipper.shipperid}}">Editar</a></td>
+            <td><a class="btn btn-danger" th:href="@{'/shipper/delete?id='+${shipper.shipperid}}">Borrar</a></td>
+        </tr>
+    </table>
+
+</body>
+</html>

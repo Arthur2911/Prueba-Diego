@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title> Lista shippers</title>
+</head>
+<body>
+<table>
+
+    <tr>
+        <th>Region ID</th>
+        <th>Territory ID</th>
+        <th>Territory Description</th>
+    </tr>
+
+    <tr th:each="territorie: ${territorieslist}">
+        <td th:text="${territorie.getRegionid()}"></td>
+        <td th:text="${territorie.getTerritoryid()}"></td>
+        <td th:text="${territorie.getTerritorydescription()}"></td>
+    </tr>
+    <a class="btn btn-danger" th:href="@{/territorienew}"> New territorie</a>
+</table>
+
+</body>
+</html>

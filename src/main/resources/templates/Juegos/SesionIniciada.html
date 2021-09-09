@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Sesion Iniciada</title>
+</head>
+<body>
+
+    <h1>Sesión Iniciada</h1>
+    <h2>Credenciales del usuario</h2>
+    <p th:text="${Nombre}"></p>
+    <p th:text="${Cont}"></p>
+    <p th:text="${ID}"></p>
+
+
+    <h3>Buscador Biblioteca</h3>
+
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Código</th>
+        </tr>
+        <tr th:each="juego, variableEstado: ${listaJuegos}">
+            <td th:text="${variableEstado.index +1}"></td>
+            <td th:text="${juego.nombrejuego}"></td>
+            <td th:text="${juego.aniosalida}"></td>
+        </tr>
+    </table>
+
+    <form th:object="${JuegoPrueba}">
+        <input type="text" th:field="*{nombrejuego}"/><br/>
+        <input type="text" th:field="*{aniosalida}"/><br/>
+        <input type="text" th:field="*{edad}"/><br/>
+    </form>
+
+    <h3> Prueba BOX</h3>
+    <label for="Datos"> Seleccione el juego</label>
+    <select id="Datos" >
+        <option th:each="juego : ${listaJuegos}"
+                th:text="${juego.nombrejuego}">
+        </option>
+
+    </select>
+
+
+
+
+</body>
+</html>
