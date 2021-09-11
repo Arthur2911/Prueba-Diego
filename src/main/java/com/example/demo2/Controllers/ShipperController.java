@@ -41,7 +41,7 @@ public class ShipperController {
        if (shipperOpt.isPresent()) {
            Shipper shipper = shipperOpt.get();
            model.addAttribute("shipper", shipper);
-           return "shipper/editform";
+           return "shipper/editForm";
        }
        else{
            return "redirect:/shipper";
@@ -76,6 +76,14 @@ public class ShipperController {
 
     @PostMapping("/shipper/search2")
     public String searchShipperPruebas(@RequestParam("searchName") String searchName, Model model){
+        model.addAttribute("shipperList", shipperRepository.findByCompanyname(searchName));
+        return "shipper/list"; //comentario
+    }
+
+
+
+    @PostMapping("/shipper/search3")
+    public String searchShipperPruebas2(@RequestParam("searchName") String searchName, Model model){
         model.addAttribute("shipperList", shipperRepository.findByCompanyname(searchName));
         return "shipper/list"; //comentario
     }
