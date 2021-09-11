@@ -77,7 +77,7 @@ public class ShipperController {
     @PostMapping("/shipper/search2")
     public String searchShipperPruebas(@RequestParam("searchName") String searchName, Model model){
         model.addAttribute("shipperList", shipperRepository.findByCompanyname(searchName));
-        return "shipper/list";
+        return "shipper/list"; //comentario
     }
 
 
