@@ -15,7 +15,7 @@ public class TerritoriesController {
     @GetMapping("/Territorieslista")
     public String Territories(Model model){
         model.addAttribute("territorieslist", territoriesRepository.findAll());
-        return "territories/Territories";
+        return "territories/Territories"; //Pruebas para descarga
     }
 
     @GetMapping("/territorienew")
